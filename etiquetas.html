@@ -1,0 +1,127 @@
+<!-- NOMENCLATURA !DOCTYPE INFORMA QUE O DOCUMENTO É ESCRITO EM HTML5 -->
+<!DOCTYPE html>
+<html> 
+
+    <!-- CABEÇALHO DO DOCUMENTO HTML-->
+    <head>
+
+      <!-- CHARSET UTF-8:  ABRANGE QUASE TODOS OS CARACTERES DO MUNDO! INCLUSIVE ACENTUAÇÃO -->
+      <meta charset="UTF-8">
+
+      <!-- META ROBOTS:COM VALOR NOINDEX E NOFOLLOW, ONDE O CONTEUDO NÃO SERÁ
+      INDEXADO E NEM SEGUIDO PELOS MECANISMOS DE BUSCA (GOOGLE, YAHOO, BAIDU, E ETC.)-->
+      <meta name="robots" content="noindex, nofollow">
+
+      <!-- META DESCRIÇÃO: UM RESUMO DA DESCRIÇÃO DO SITE-->
+      <meta name="description" content="Etiquetas Cadastro único - São Bento/PB">
+
+      <!-- META PALAVRAS CHAVE: SERÃO LIDAS PELOS ROBOTS DOS MOTORES DE BUSCA -->
+      <meta name="keywords" content="etiquetas,são bento,cad unico,bolsa familia">
+
+      <!-- META AUTOR: NOME DO DESENVOLVEDOR DO SISTEMA -->
+      <meta name="author" content="Marcelo Henrique">
+
+      <!-- META JANELA DE EXIBIÇÃO: CONFIGURADA PARA DISPOSITIVOS EM GERAL (DESIGN RESPONSIVO) -->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!-- FRAMEWORK CSS NORMALIZE: USADO PARA RESETAR PROPRIEDADES CSS NOS NAVEGADORES -->
+      <link rel="stylesheet" href="css/normalize.css">
+
+      <!-- FRAMEWORK CSS BOOTSTRAP: UTILIZADO NA TELA DE ETIQUETAS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+
+      <!-- CSS LOGIN: ESTILIZA ITENS DA TELA DE ETIQUETAS -->
+      <link rel="stylesheet" href="css/estilo.css">
+
+      <!-- TAG LINK DO TIPO ICON: EXIBE UM ICONE NA ABA DA TELA DE ETIQUETAS -->
+      <link rel="icon" href="img/logo.ico">	
+
+      <!-- TITULO DO SITE DA TELA DE LOGIN, VISTO NA ABA DA PAGINA -->
+      <title> Etiquetas Cad único - São Bento/PB</title>
+
+    <!--FIM E FECHAMENTO DA TAG DE CABEÇALHO HEAD-->
+    </head>
+
+    <body>
+
+      <!-- BLOCO DE BOTOES -->
+      <div class="bloco-botoes">
+        <div class="botoes">
+          <!-- BOTAO QUE GERA O PDF EM UMA OUTRA PÁGINA -->
+          <button class="" id="botao-imprimir">
+              <img src="img/impressora.svg" width="20" height="20" alt="impressora" style="float: left; margin-left:10px; margin-top:2px">Gerar PDF
+          </button>
+          <!-- BOTAO QUE CRIA NOVAS PÁGINAS DE ETIQUETAS DA 17ª ETIQUETA EM DIANTE -->
+          <button class="" id="botao-criar-mais-etiquetas">
+              <img src="img/nova_pagina.svg" width="20" height="20" alt="mais etiquetas" style="float: left; margin-left:10px;margin-top:4px;">Inserir Nova Página 
+          </button>
+          <!-- BOTAO QUE LIMPA TODOS OS CAMPOS DAS ETIQUETAS -->
+          <button id="botao-limpar-campos">
+              <img src="img/limpar.svg" width="20" height="20" alt="limpar campos" style="float: left; margin-left:10px; margin-top:3px;">Limpar Campos
+          </button>
+          <!-- BOTAO QUE SAI DO SISTEMA -->
+          <button id="botao-sair">
+            Sair
+          </button>
+        </div>
+      </div>
+
+      <!-- É NESTE BLOCO QUE TODAS AS ETIQUETAS SÃO INSERIDAS
+           ESSA DIV ESTÁ CENTRALIZADA NO MEIO DA TELA -->
+      <div class="corpo-da-pagina" > 
+        <div class="corpo-da-pagina-etiquetas" id="conteudo" style="position: relative;">
+        </div>     
+      </div>
+
+      <!-- BOTAO SCROLL UP - AO ROLAR A PÁGINA PRA BAIXO É EXIBIDO ESSE BOTAO
+           CASO QUEIRA RETORNAR PARA O INICIO DA PAGINA -->
+      <button id="botao-scroll"><img src="img/up-scrool.png" width="30" height="30"></button>
+
+      <!--IMPORTAÇÃO DA BIBLIOTECA JQUERY JAVASCRIPT-->
+	    <script type="text/javascript" src="js/lib/jquery-3.4.0.min.js"></script>
+      <!--IMPORTAÇÃO DA BIBLIOTECA POPER DO BOOTSTRAP JAVASCRIPT-->
+	    <script type="text/javascript" src="js/lib/popper.min.js"></script>
+      <!--IMPORTAÇÃO DA BIBLIOTECA DO BOOTSTRAP JAVASCRIPT-->
+	    <script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+      <!--IMPORTAÇÃO DA BIBLIOTECA PARA MASCARAS DE TEXTO-->
+	    <script type="text/javascript" src="js/lib/jquery.mask.js"></script>
+
+      <!--IMPORTAÇÃO DA BIBLIOTECA JSPDF PARA GERAÇÃO DE ARQUIVOS NO FORMATO PDF-->
+      <!-- <script type="text/javascript" src="js/lib/jspdf.min.js"></script>
+      IMPORTAÇÃO DO MODAL POP-UP DE MENSAGEM DE BOAS VINDAS
+
+       <script type="text/javascript" src="js/lib/jspdf.min.js"></script>
+       -->
+      
+
+      <script type="text/javascript" src="js/lib/jspdf.debug.js"></script>
+
+     
+
+      <script type="text/javascript" src="js/mensagem-de-boas-vindas.js"></script>
+      <!--IMPORTAÇÃO DO SCRIPT QUE GERA AS PRIMEIRAS 16 ETIQUETAS-->
+      <script type="text/javascript" src="js/primeira-pagina-etiquetas.js"></script>
+      <!--IMPORTAÇÃO DO SCRIPT QUE GERA OUTRAS PÁGINAS COM 16 ETIQUETAS CADA-->
+      <script type="text/javascript" src="js/nova-pagina-etiquetas.js"></script>
+      <!--IMPORTAÇÃO DO SCRIPT QUE GERA UM PDF COM TODAS AS ETIQUETAS PREENCHIDAS-->
+      <script type="text/javascript" src="js/gerar-pdf.js"></script>
+      <!--IMPORTAÇÃO DO SCRIPT QUE TRATA OS EVENTOS DE CAMPOS DE TEXTO-->
+      <script type="text/javascript" src="js/eventos-campos-de-texto.js"></script>
+      <!--IMPORTAÇÃO DO SCRIPT QUE SELECIONA O PRÓXIMO CAMPO DE TEXTO-->
+      <script type="text/javascript" src="js/seleciona-proximo-campo.js"></script>
+      <!--IMPORTAÇÃO DO SCRIPT QUE POE UMA MASCARA NO CAMPO DE TEXTO-->
+      <script type="text/javascript" src="js/mascaras-de-texto.js"></script>
+      <!--IMPORTAÇÃO DO SCRIPT QUE LIMPA TODOS OS CAMPOS DE TEXTO-->
+      <script type="text/javascript" src="js/limpar-campos.js"></script>
+      <!--IMPORTAÇÃO DO SCRIPT QUE EXIBE UM TOOLTIP AO PASSAR O MOUSE SOBRE O ELEMENTO LABEL DOS FORM-->
+      <script type="text/javascript" src="js/tooltips.js"></script>
+      <!--IMPORTAÇÃO DO SCRIPT QUE SAI DA PAGINA-->
+      <script type="text/javascript" src="js/sair-da-pagina.js"></script>
+      <!--IMPORTAÇÃO DO SCRIPT QUE POE UM BOTAO SCROLL UP NA PÁGINA AO ROLAR A MESMA PARA BAIXO-->
+      <script type="text/javascript" src="js/scroll-top.js"></script>
+
+    <!--FIM E FECHAMENTO DA TAG DO CORPO DO DOCUMENTO HTML-->
+    </body>
+
+<!--FIM E FECHAMENTO DA TAG HTML-->
+</html>

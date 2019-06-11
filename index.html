@@ -1,0 +1,160 @@
+<!-- NOMENCLATURA !DOCTYPE INFORMA QUE O DOCUMENTO É ESCRITO EM HTML5 -->
+<!DOCTYPE html>
+<html> 
+
+    <!-- CABEÇALHO DO DOCUMENTO HTML-->
+    <head>
+        
+        <!-- CHARSET UTF-8:  ABRANGE QUASE TODOS OS CARACTERES DO MUNDO! INCLUSIVE ACENTUAÇÃO -->
+        <meta charset="UTF-8">
+
+        <!-- META ROBOTS:COM VALOR NOINDEX E NOFOLLOW, ONDE O CONTEUDO NÃO SERÁ
+        INDEXADO E NEM SEGUIDO PELOS MECANISMOS DE BUSCA (GOOGLE, YAHOO, BAIDU, E ETC.)-->
+        <meta name="robots" content="noindex, nofollow">
+
+        <!-- META DESCRIÇÃO: UM RESUMO DA DESCRIÇÃO DO SITE-->
+        <meta name="description" content="Etiquetas Cadastro único - São Bento/PB">
+
+        <!-- META PALAVRAS CHAVE: SERÃO LIDAS PELOS ROBOTS DOS MOTORES DE BUSCA -->
+        <meta name="keywords" content="etiquetas,são bento,cad unico,bolsa familia">
+
+        <!-- META AUTOR: NOME DO DESENVOLVEDOR DO SISTEMA -->
+        <meta name="author" content="Marcelo Henrique">
+
+        <!-- META JANELA DE EXIBIÇÃO: CONFIGURADA PARA DISPOSITIVOS EM GERAL (DESIGN RESPONSIVO) -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- FRAMEWORK CSS NORMALIZE: USADO PARA RESETAR PROPRIEDADES CSS NOS NAVEGADORES -->
+        <link rel="stylesheet" href="css/normalize.css">
+
+        <!-- FRAMEWORK CSS MATERIALIZE: UTILIZADO NA TELA DE LOGIN NOS CAMPOS DE ENTRADE DE TEXTO  -->
+        <link rel="stylesheet" href="css/materialize.min.css">
+
+        <!-- CSS LOGIN: ESTILIZA ITENS DA TELA DE LOGIN -->
+        <link rel="stylesheet" href="css/login.css">
+
+        <!-- TAG LINK DO TIPO ICON: EXIBE UM ICONE NA ABA DA TELA DE LOGIN -->
+        <link rel="icon" href="img/logo.ico">	
+
+        <!-- TITULO DO SITE DA TELA DE LOGIN, VISTO NA ABA DA PAGINA -->
+        <title>Login - Etiquetas Cad único - São Bento/PB</title>
+
+    <!--FIM E FECHAMENTO DA TAG DE CABEÇALHO HEAD-->
+    </head>
+
+    <body>
+
+        <!-- BLOCO DE LOGIN, QUE POSSUI A LOGO E O 
+        FORMULÁRIO (CAMPOS EMAIL, SENHA E BOTAO) DE ENTRADA NO SISTEMA -->
+        <div class="bloco-de-login" > 
+
+            <!--MENSAGEM DE ALERTA, UTILIZADA PARA TRATAMENTO DE ERROS-->
+            <div class="alerta">
+                <p class="mensagem">{Seu texto...}</p>
+                <button class="botao-fechar-alerta" id="fechar-mensagem"><strong class="texto">&times;</strong></button>
+            </div>
+
+            <!--IMAGEM DA LOGO DO SISTEMA-->
+            <img class="perfil" src="img/logo.png" alt="perfil de login" title="Etiquetas Mais">
+
+            <!--FORMULARIO COM DOIS CAMPOS DE ENTRADA DE DADOS E UM BOTAO DE ENVIAR ESTES DADOS
+            ALÉM DISSO, FOI UTILIZADO O MÉTODO POST(NAO MOSTRA OS DADOS) NO ENVIO DO FORMULÁRIO-->
+            <form class="formulario" id="formulario" method="POST">
+                <div class="input-field col s12">
+                    <input id="email_inline" type="email" class="validate" name="" value="">
+                    <label for="email_inline">E-mail</label>
+                </div>
+                <div class="input-field col s12">
+                    <input id="password" type="password" class="validate" name="" value="">
+                    <label for="password">Senha</label>
+                </div>
+                <input type="submit" name="botao" value="Entrar" id="ir-para-pagina-etiquetas">
+            </form>
+        </div>
+
+        <!--IMPORTAÇÃO DA BIBLIOTECA JQUERY JAVASCRIPT-->
+        <script type="text/javascript" src="js/lib/jquery-3.4.0.min.js"></script>
+
+        <!--IMPORTAÇÃO DA BIBLIOTECA MATERIALIZE JAVASCRIPT-->
+        <script type="text/javascript" src="js/lib/materialize.min.js"></script>
+
+        <!--INICIA O SCRIPT NO FIM DA PÁGINA PARA FAZER LOGIN NO SISTEMA-->
+        <script>
+
+            // FECHA A MENSAGEM DE ALERTA QUE É MOSTRADA QUANDO OS CAMPOS ESTÃO INVÁLIDOS
+            $(document).on("click", "#fechar-mensagem", 
+            function fechar(){
+                $(".alerta").fadeOut();   
+            });
+
+            // CRIA UMA VARIÁVEL CHAMADA FORMULÁRIO QUE PEGA O ID DO FORM
+            var formulario = document.getElementById("formulario"); 
+            // CRIA UM EVENTO DO TIPO ENVIAR NA VARIAVEL FORMULÁRIO 
+            formulario.addEventListener("submit", function isParaPaginaEtiquetas(evento){
+                var email = document.getElementById("email_inline").value;
+                var senha = document.getElementById("password").value;
+
+                // SE O EMAIL E A SENHA FOREM VÁLIDOS, ENTRA NO SISTEMA
+                if(email==="admin@gmail.com" && senha==="123"){
+                    window.location.href = "etiquetas.html";
+                //SENAO - ENTÃO QUER DIZER QUE UM DOS DADOS ESTÁ INVÁLIDO
+                }else{
+                    // SE O EMAIL E A SENHA ESTIVEREM VAZIO
+                    if(email==="" && senha===""){
+                        mostraAlerta(".alerta", "#ffeeba", "#fff3cd", ".mensagem", "#856404", ".texto", "#856404", ".mensagem", "Campos em branco! Informe E-mail e Senha!", "#email_inline");
+                    // SENÃO - ENTÃO QUER DIZER QUE UM OU TODOS OS DADOS ESTÃO PREENCHIDOS
+                    }else{
+                        // SE - O EMAIL ESTIVER VAZIO E A SENHA ESTIVER PREENCHIDO
+                        if(email==="" && senha!==""){
+                            mostraAlerta(".alerta", "#ffeeba", "#fff3cd", ".mensagem", "#856404", ".texto", "#856404", ".mensagem", "Campo em branco! Informe o seu E-mail!", "#email_inline");
+                        // SENÃO SE - O EMAIL ESTIVER PREENCHIDO E A SENHA ESTIVER VAZIA    
+                        }else if(email!=="" && senha===""){
+                            mostraAlerta(".alerta", "#ffeeba", "#fff3cd", ".mensagem", "#856404", ".texto", "#856404", ".mensagem", "Campo em branco! Informe a sua senha!", "#password");
+                        // SENÃO SE - O EMAIL ESTIVER PREENCHIDO E A SENHA ESTIVER PREENCHIDA        
+                        }else if(email!=="" && senha!==""){           
+                            mostraAlerta(".alerta", "#f5c6cb", "#f8d7da", ".mensagem", "#721c24", ".texto", "#721c24", ".mensagem", "E-mail ou senha incorreta!", "");
+                        }
+                    }
+
+                    /* 
+                        CASO ALGUMAS DA OPÇÕES ESTEJA INVÁLIDA,
+                        É MOSTRADA UMA MENSAGEM DE ADVERTÊNCIA OU ERRO, 
+                        INFORMANDO O PROBLEMA PARA O USUÁRIO 
+                    */
+                    $(".alerta").fadeIn();     
+                 
+                }
+
+                /* 
+                    POR PADRÃO O ENVIO DE FORMULÁRIOS ATRAVÉS DE BOTÕES,
+                    DISPARA UMA AÇÃO PADRÃO DO TIPO SUBMIT, ONDE A PÁGINA PODE SOFRER UM RECARREGAMENTO
+                    OU CARREGAR UMA NOVA PÁGINA DE DESTINO, 
+                    O QUE ISSO ACABA DESATIVANDO AS MENSAGENS DE ADVERTÊNCIA E ERRO
+                    PARA RESOLVER ESTE PROBLEMA, É NECESSÁRIO DESABILITAR ESTE EVENTO PADRÃO DOS FORMULÁRIOS, USANDO O MÉTODO JAVASCRIPT preventDefault();
+                */
+                evento.preventDefault(); 
+
+            } , false);
+
+            // FUNÇÃO QUE MOSTRA A MENSAGEM DE ALERTA NA TELA DE LOGIN, CASO OCORRA ALGUM PROBLEMA
+            function mostraAlerta(blocoAlerta, corDaBordaDoAlerta, corDeFundoDaBordaDoAlerta,
+                mensagem, corDaMensagem, botao, corDoTextoDoBotao, mensagem, mensagemDeTexto,
+                selecionarCampo){
+                $(blocoAlerta).css({
+                "border":"1px solid " + corDaBordaDoAlerta,
+                "background-color": corDeFundoDaBordaDoAlerta
+                });
+                $(mensagem).css("color", corDaMensagem); 
+                $(botao).css("color", corDoTextoDoBotao);   
+                $(mensagem).html(mensagemDeTexto);
+                $(selecionarCampo).select();
+            } 
+
+        // FIM DO SCRIPT QUE ENTRA NO SISTEMA
+        </script>
+	   
+    <!--FIM E FECHAMENTO DA TAG DO CORPO DO DOCUMENTO HTML-->
+    </body>
+
+<!--FIM E FECHAMENTO DA TAG HTML-->
+</html>
